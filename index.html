@@ -17,8 +17,15 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <h1>Hello, beautiful!</h1>
+  <body ng-app="store">
+
+    <div ng-controller="storeController as store">
+      <h1>{{store.product.name}}</h1>
+      <h2>${{store.product.price}}</h2>
+      <p>
+        {{store.product.description}}
+      </p>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="app/core.js"></script>
