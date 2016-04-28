@@ -19,16 +19,18 @@
   </head>
   <body ng-app="store">
 
-    <div ng-controller="storeController as store">
-      <div ng-repeat="product in store.products" ng-hide="product.soldOut">
-        <h1>{{product.name}}</h1>
-        <h2>${{product.price}}</h2>
-        <p>
-          {{product.description}}
-        </p>
-        <button ng-show="product.canPurchase">Add to Cart</button>
-      </div>
-    </div>
+    <div ng-controller="storeController as store" class="container">
+    <ul class="list-group">
+        <li ng-repeat="product in store.products" ng-hide="product.soldOut" class="list-group-item">
+          <h3>
+            {{product.name}}
+            <em class="pull-right">{{product.price | currency}}</em>
+          </h3>
+          <p>{{product.description}}</p>
+          <button ng-show="product.canPurchase">Add to Cart</button>
+        </li>
+    </ul>
+  </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="app/core.js"></script>
