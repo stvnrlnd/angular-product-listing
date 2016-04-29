@@ -41,8 +41,8 @@
                 <div class="tab-pane ng-class:{active:item.isSelected(2)}" ng-show="item.isSelected(2)">
                   <p></p>
                 </div>
-                <div class="tab-pane ng-class:{active:item.isSelected(3)}" ng-show="item.isSelected(3)">
-                  <blockquote ng-repeat="review in product.review">
+                <div class="tab-pane ng-class:{active:item.isSelected(3)}" ng-show="item.isSelected(3)" ng-controller="reviewController as reviewCTRL">
+                  <blockquote ng-repeat="review in product.reviews">
                     <b>Stars: {{review.stars}}</b>
                     <p>
                       {{review.body}}
@@ -50,11 +50,11 @@
                     <cite>by: {{review.author}}</cite>
                   </blockquote>
                   <h3>Submit a Review</h3>
-                  <form name="reviewForm" class="form-horizontal">
+                  <form name="reviewForm" class="form-horizontal" ng-submit="reviewCTRL.addReview(product)">
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Stars:</label>
                       <div class="col-sm-10">
-                        <select ng-model="review.stars" class="form-control">
+                        <select ng-model="reviewCTRL.review.stars" class="form-control">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -66,13 +66,13 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Review:</label>
                       <div class="col-sm-10">
-                        <textarea ng-model="review.body" class="form-control"></textarea>
+                        <textarea ng-model="reviewCTRL.review.body" class="form-control"></textarea>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label">Author:</label>
                       <div class="col-sm-10">
-                        <input ng-model="review.author" type="email" class="form-control"/>
+                        <input ng-model="reviewCTRL.review.author" type="email" class="form-control"/>
                       </div>
                     </div>
                     <div class="form-group">
