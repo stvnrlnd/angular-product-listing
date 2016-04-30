@@ -19,6 +19,12 @@
         product.reviews.push(this.review);
         this.review = {};
       };
+    })
+    .directive('productDirective', function() {
+      return {
+        restrict: 'E',
+        templateUrl: '../product-directive.html'
+      };
     });
 
     var items = [

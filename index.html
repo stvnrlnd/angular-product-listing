@@ -29,73 +29,8 @@
   <body ng-app="store">
 
     <div ng-controller="storeController as store" class="container">
-      <section ng-repeat="product in store.products" class="panel panel-default">
-          <article ng-hide="product.soldOut" class="panel-body">
-            <img ng-src="http://lorempixel.com/1920/200/food" alt="" class="img-responsive img-rounded" />
-            <h1>
-              {{product.name}}
-              <small class="pull-right">{{product.price | currency}}</small>
-            </h1>
-            <button class="btn btn-primary pull-right" ng-show="product.canPurchase">Add to Cart</button>
-            <div ng-controller="itemController as item">
-              <ul class="nav nav-tabs">
-                <li ng-class="{active:item.isSelected(1)}"><a href="" ng-click="item.selectTab(1)">Description</a></li>
-                <li ng-class="{active:item.isSelected(2)}"><a href="" ng-click="item.selectTab(2)">Tech Specs</a></li>
-                <li ng-class="{active:item.isSelected(3)}"><a href="" ng-click="item.selectTab(3)">Reviews</a></li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane ng-class:{active:item.isSelected(1)}" ng-show="item.isSelected(1)">
-                  <p>{{product.description}}</p>
-                </div>
-                <div class="tab-pane ng-class:{active:item.isSelected(2)}" ng-show="item.isSelected(2)">
-                  <p></p>
-                </div>
-                <div class="tab-pane ng-class:{active:item.isSelected(3)}" ng-show="item.isSelected(3)" ng-controller="reviewController as reviewCTRL">
-                  <blockquote ng-repeat="review in product.reviews">
-                    <b>Stars: {{review.stars}}</b>
-                    <p>
-                      {{review.body}}
-                    </p>
-                    <cite>by: {{review.author}}</cite>
-                  </blockquote>
-                  <h3>Submit a Review</h3>
-                  <form name="reviewForm" class="form-horizontal" ng-submit="reviewForm.$valid && reviewCTRL.addReview(product)" novalidate>
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Stars:</label>
-                      <div class="col-sm-10">
-                        <select ng-model="reviewCTRL.review.stars" class="form-control" name="reviewStars" required>
-                          <option>1 Stars</option>
-                          <option>2 Stars</option>
-                          <option>3 Stars</option>
-                          <option>4 Stars</option>
-                          <option>5 Stars</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Review:</label>
-                      <div class="col-sm-10">
-                        <textarea ng-model="reviewCTRL.review.body" class="form-control" name="reviewBody" required></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Author:</label>
-                      <div class="col-sm-10">
-                        <input ng-model="reviewCTRL.review.author" type="email" class="form-control" name="reviewAuthor" required/>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" value="Submit">
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </article>
-      </section>
-  </div>
+      <product-title></product-title>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="app/core.js"></script>
