@@ -29,9 +29,11 @@
         canPurchase: true,
         soldOut: false,
         reviews: [
-          {stars: 5,
-          body: 'awesome',
-          author: 'jim@johns.con'}
+          {
+            stars: 5,
+            body: 'awesome',
+            author: 'jim@johns.con'
+          }
         ]
       },
       {
